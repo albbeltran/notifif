@@ -52,6 +52,10 @@ class UserRepository {
         return following;
     }
 
+    getAllFollows() {
+        return this.follows;
+    }
+
     find(id) {
         return this.users.filter(user => user.id === Number(id))[0];
     }

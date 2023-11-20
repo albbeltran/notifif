@@ -30,6 +30,10 @@ class UserManager {
         const users = this.userRepository.following(id);
         return users;
     }
+    
+    getAllFollows() {
+        return this.userRepository.getAllFollows();
+    }
 
     getById(id) {
         const user = this.userRepository.find(id);
