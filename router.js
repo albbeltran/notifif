@@ -15,5 +15,6 @@ const userController = new UserController(userManager);
 
 router.post('/login', (req, res) => userController.signIn(req, res));
 router.post('/user', (req, res) => userController.createUser(req, res));
+router.post('/follow', (req, res) => userController.addFollow(req, res));
 
 module.exports = router;

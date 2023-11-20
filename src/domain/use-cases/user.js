@@ -19,6 +19,11 @@ class UserManager {
         if(sucess) return user;
         return null;
     }
+
+    addFollow(id, authorId) {
+        const user = this.userRepository.follow(id, authorId);
+        return user;
+    }
 }
 
 module.exports = UserManager;

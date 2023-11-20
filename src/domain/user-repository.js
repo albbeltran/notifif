@@ -22,12 +22,22 @@ class UserRepository {
         return this.users;
     }
 
-    find(id) {
-        return this.users.filter(user => user.id === Number(id));
-    }
-
     getAll() {
         return this.users;
+    }
+
+    follow(id, authorId) {
+        const user = this.find(id)[0];
+        const author = this.find(authorId)[0];
+        user.following = author;
+
+        this.users = this.users.map(u => u.id !== user.id ? u : user);
+
+        return user;
+    }
+
+    find(id) {
+        return this.users.filter(user => user.id === Number(id));
     }
 }
 
