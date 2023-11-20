@@ -1,31 +1,10 @@
+const { users } = require("../../data");
+const { follows } = require("../../data");
+
 class UserRepository {
     constructor() {
-        this.users = [
-            {
-                id: 1,
-                name: "Max",
-                password: "ok",
-                role: "alumno"
-            },
-            {
-                id: 2,
-                name: "Jorge",
-                password: "ok",
-                role: "administrativo"
-            },
-            {
-                id: 3,
-                name: "Jorge",
-                password: "ok",
-                role: "administrativo"
-            }
-        ];
-
-        this.follows = [
-            { id: 1, followerId: 3, followingId: 1 },
-            { id: 2, followerId: 3, followingId: 2 },
-            { id: 3, followerId: 1, followingId: 2 }
-        ]
+        this.users = users;
+        this.follows = follows;
     }
 
     create(user) {

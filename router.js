@@ -4,7 +4,7 @@ const router = express.Router();
 // Users
 const UserController = require("./src/controllers/userController");
 const UserManager = require("./src/domain/use-cases/user");
-const UserRepository = require("./src/domain/user-repository");
+const UserRepository = require("./src/data-access/user-repository");
 const AuthService = require("./src/common/auth/auth-service");
 
 const authService = new AuthService();
@@ -23,7 +23,7 @@ router.get('/user/:id', (req, res) => userController.getById(req, res))
 // Notifications
 const NotificationController = require("./src/controllers/notificationController");
 const NotificationManager = require("./src/domain/use-cases/notification");
-const NotificationRepository = require("./src/domain/notification-repository");
+const NotificationRepository = require("./src/data-access/notification-repository");
 
 const notificationRepository = new NotificationRepository();
 

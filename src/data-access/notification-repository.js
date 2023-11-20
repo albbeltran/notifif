@@ -1,25 +1,8 @@
+const { notifications } = require("../../data");
+
 class NotificationRepository {
     constructor() {
-        this.notifications = [
-            {
-                "id": 1,
-                "title": "Posada FIF",
-                "body": "Te invitamos a la posada FIFI",
-                "author": 2
-            },
-            {
-                "id": 2,
-                "title": "Posada FIF",
-                "body": "Te invitamos a la posada FIFI",
-                "author": 1
-            },
-            {
-                "id": 3,
-                "title": "Posada FIF",
-                "body": "Te invitamos a la posada FIFI",
-                "author": 2
-            },
-        ];
+        this.notifications = notifications;
     }
 
     create(notification) {
