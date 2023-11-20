@@ -14,5 +14,6 @@ const userManager = new UserManager(userRepository, authService);
 const userController = new UserController(userManager);
 
 router.post('/login', (req, res) => userController.signIn(req, res));
+router.post('/user', (req, res) => userController.createUser(req, res));
 
 module.exports = router;

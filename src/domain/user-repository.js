@@ -17,7 +17,9 @@ class UserRepository {
     }
 
     create(user) {
+        user.id = this.users.length + 1;
         this.users.push(user);
+        return this.users;
     }
 
     find(id) {

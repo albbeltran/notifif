@@ -6,10 +6,11 @@ class UserManager {
         this.authService = authService;
     }
 
-    createUser(id, name, role) {
-        const user = new User(id, name, role);
-        this.userRepository.create(user);
-        return user;
+    createUser(name, role, password) {
+        const user = new User(name, role, password);
+        console.log(user)
+        const users = this.userRepository.create(user);
+        return users;
     }
 
     signIn(id, password) {
