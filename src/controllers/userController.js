@@ -15,10 +15,22 @@ class UserController {
         res.send(user);
     }
 
+    getUserById(req, res) {
+        const {id} = req.body;
+        const user = this.userManager.getUserById(id);
+        res.send(user);
+    }
+
     addFollow(req, res) {
         const { id, authorId } = req.body;
         const user = this.userManager.addFollow(id, authorId);
         res.send(user);
+    }
+
+    getFollowingById(req, res) {
+        const {id} = req.body;
+        const users = this.userManager.getFollowingById(id);
+        res.send(users);
     }
 }
 

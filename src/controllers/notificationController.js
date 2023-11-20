@@ -8,6 +8,18 @@ class NotificationController {
         const notifications = this.notificationManager.createNotification(title, body, author);
         res.send(notifications);
     }
+
+    getFeed(req, res) {
+        const { id } = req.body;
+        const notifications = this.notificationManager.getFeed(id);
+        res.send(notifications);
+    }
+
+    getNotificationByUser(req, res) {
+        const { id } = req.body;
+        const notifications = this.notificationManager.getByUser(id);
+        res.send(notifications);
+    }
 }
 
 module.exports = NotificationController;

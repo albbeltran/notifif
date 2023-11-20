@@ -16,6 +16,8 @@ const userController = new UserController(userManager);
 router.post('/login', (req, res) => userController.signIn(req, res));
 router.post('/user', (req, res) => userController.createUser(req, res));
 router.post('/follow', (req, res) => userController.addFollow(req, res));
+router.get('/follow', (req, res) => userController.getFollowingById(req, res));
+router.get('/user', (req, res) => userController.getUserById(req, res))
 
 // Notifications
 const NotificationController = require("./src/controllers/notificationController");
@@ -24,9 +26,11 @@ const NotificationRepository = require("./src/domain/notification-repository");
 
 const notificationRepository = new NotificationRepository();
 
-const notificationManager = new NotificationManager(notificationRepository);
+const notificationManager = new NotificationManager(notificationRepository, userManager);
 const notificationController = new NotificationController(notificationManager);
 
 router.post('/notification', (req, res) => notificationController.createNotification(req, res));
+router.get('/', (req, res) => notificationController.getFeed(req, res));
+router.get('/notification', (req, res) => notificationController.getNotificationByUser(req, res));
 
 module.exports = router;

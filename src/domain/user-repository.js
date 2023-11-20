@@ -12,10 +12,25 @@ class UserRepository {
                 name: "Jorge",
                 password: "ok",
                 role: "administrativo"
+            },
+            {
+                id: 3,
+                name: "Jorge",
+                password: "ok",
+                role: "administrativo"
             }
         ];
 
-        this.follows = []
+        this.follows = [
+            {
+                "id": 1,
+                "authorId": 2
+            },
+            {
+                "id": 3,
+                "authorId": 1
+            }
+        ]
     }
 
     create(user) {
@@ -29,8 +44,8 @@ class UserRepository {
     }
 
     follow(id, authorId) {
-        const user = this.find(id)[0];
-        const author = this.find(authorId)[0];
+        const user = this.find(id);
+        const author = this.find(authorId);
     
         const newFollow = {
             id: ++this.follows.length,
@@ -43,8 +58,16 @@ class UserRepository {
         return newFollow;
     }
 
+    following(id) {
+        const following = [];
+    
+        this.follows.forEach(follow => follow.id === id ? following.push(this.find(follow.authorId)) : '');
+    
+        return following;
+    }
+
     find(id) {
-        return this.users.filter(user => user.id === Number(id));
+        return this.users.filter(user => user.id === Number(id))[0];
     }
 }
 

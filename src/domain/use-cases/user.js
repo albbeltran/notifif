@@ -24,6 +24,16 @@ class UserManager {
         const user = this.userRepository.follow(id, authorId);
         return user;
     }
+
+    getFollowingById(id) {
+        const users = this.userRepository.following(id);
+        return users;
+    }
+
+    getUserById(id) {
+        const user = this.userRepository.find(id);
+        return user;
+    }
 }
 
 module.exports = UserManager;
