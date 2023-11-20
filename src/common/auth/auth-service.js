@@ -1,8 +1,10 @@
 class AuthService {
     matchPassword(attemptPass, password) {
         // bycrypt
-        if(password === attemptPass) return true;
-        return false;
+        return new Promise((resolve, reject) => {
+            if(password === attemptPass) resolve();
+            reject();
+        })
     }
 
     hashPassword(plainPassword) {

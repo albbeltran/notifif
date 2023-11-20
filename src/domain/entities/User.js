@@ -1,9 +1,10 @@
 class User {
-    static counter = 0;
+    // static counter = 0;
 
-    constructor(name, role, password) {
-        this.id = ++User.counter;
-        this.name = name;
+    constructor(id, role, password) {
+        // this.id = ++User.counter;
+        this.id = id;
+        // this.name = name;
         this.role = role;
         this.password = password;
     }

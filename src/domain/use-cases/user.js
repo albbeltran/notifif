@@ -7,17 +7,20 @@ class UserManager {
         this.authService = authService;
     }
 
-    create(name, role, password) {
-        const user = new User(name, role, password);
+    create(id, role, password) {
+        const user = new User(id, role, password);
         const users = this.userRepository.create(user);
         return users;
     }
 
-    signIn(id, password) {
-        const user = this.userRepository.find(id);
-        const sucess = this.authService.matchPassword(password, user.password)
-        if(sucess) return user;
-        return null;
+    async signIn(id, password) {
+        try {
+            const user = this.userRepository.find(id);
+            await this.authService.matchPassword(password, user.password);
+            return user;
+        } catch {
+            return null;
+        }
     }
 
     getById(id) {
@@ -35,7 +38,7 @@ class UserManager {
         const users = this.userRepository.following(id);
         return users;
     }
-    
+
     getAllFollows() {
         return this.userRepository.getAllFollows();
     }

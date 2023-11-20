@@ -4,15 +4,15 @@ class UserController {
     }
 
     create(req, res) {
-        const { name, role, password } = req.body;
-        const users = this.userManager.create(name, role, password);
+        const { id, role, password } = req.body;
+        const users = this.userManager.create(id, role, password);
         res.send(users);
     }
 
-    signIn(req, res) {
+    async signIn(req, res) {
         const { id, password } = req.body;
-        const user = this.userManager.signIn(id, password);
-        res.send(user);
+        const user = await this.userManager.signIn(id, password);
+        res.json(user);
     }
 
     getById(req, res) {

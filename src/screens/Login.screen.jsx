@@ -12,36 +12,40 @@ export default function Login() {
     const [valid, setValid] = useState(false);
     const [error, setError] = useState(null);
 
+    const { id, password } = form;
+
     const handleChange = ({ key, value }) => {
         setForm((prev) => ({ ...prev, [key]: value }));
         setError(null);
     };
 
     const signIn = async () => {
-        console.log('SI')
         try {
-            await fetch('http://127.0.0.1:3000/login', {
+            const res = await fetch('http://192.168.91.154:3000/login', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: form.id
+                body: JSON.stringify({
+                    id,
+                    password
+                })
             });
+
+            const user = await res.json();
 
             if (user) {
                 setForm(baseState());
-                // navigation.navigate(ROUTES.flashcards);
+                alert('Success');
                 setError(null);
             } else {
-                setError("SignIn failed: User not authenticated"); // Pending
+                setError("¡Oops! Verifica tus datos."); // Pending
             }
         } catch (err) {
             console.log(err)
         }
     }
-
-    const { id, password } = form;
 
     return (
         <View style={styles.container}>
