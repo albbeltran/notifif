@@ -14,6 +14,8 @@ class UserRepository {
                 role: "administrativo"
             }
         ];
+
+        this.follows = []
     }
 
     create(user) {
@@ -28,12 +30,17 @@ class UserRepository {
 
     follow(id, authorId) {
         const user = this.find(id)[0];
-        const author = this.find(authorId)[0];
-        user.following = author;
+        const following = this.find(authorId)[0];
+    
+        const newFollow = {
+            id: this.follows.length++,
+            followedId: user.id,
+            followingId: following.id
+        }
 
-        this.users = this.users.map(u => u.id !== user.id ? u : user);
+        this.follows.push(newFollow);
 
-        return user;
+        return newFollow;
     }
 
     find(id) {
