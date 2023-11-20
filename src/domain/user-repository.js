@@ -22,14 +22,13 @@ class UserRepository {
         ];
 
         this.follows = [
-            { id: 1, followedId: 3, followingId: 1 },
-            { id: 2, followedId: 3, followingId: 2 },
-            { id: 3, followedId: 1, followingId: 2 }
+            { id: 1, followerId: 3, followingId: 1 },
+            { id: 2, followerId: 3, followingId: 2 },
+            { id: 3, followerId: 1, followingId: 2 }
         ]
     }
 
     create(user) {
-        user.id = this.users.length + 1;
         this.users.push(user);
         return this.users;
     }
@@ -38,25 +37,17 @@ class UserRepository {
         return this.users;
     }
 
-    follow(id, authorId) {
-        const user = this.find(id);
-        const author = this.find(authorId);
-
-        const newFollow = {
-            id: ++this.follows.length,
-            followedId: user.id,
-            followingId: author.id
-        }
-
+    follow(newFollow) {
         this.follows.push(newFollow);
+        const followingUser = this.find(newFollow.followingId);
 
-        return newFollow;
+        return followingUser;
     }
 
     following(id) {
         const following = [];
 
-        this.follows.forEach(follow => follow.followedId === id ? following.push(this.find(follow.followingId)) : '');
+        this.follows.forEach(follow => follow.followerId === id ? following.push(this.find(follow.followingId)) : '');
 
         return following;
     }

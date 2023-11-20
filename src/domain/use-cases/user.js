@@ -1,4 +1,5 @@
 const User = require("../entities/User");
+const Follow = require("../entities/Follow");
 
 class UserManager {
     constructor(userRepository, authService) {
@@ -20,7 +21,8 @@ class UserManager {
     }
 
     addFollow(id, authorId) {
-        const user = this.userRepository.follow(id, authorId);
+        const follow = new Follow(id, authorId);
+        const user = this.userRepository.follow(follow);
         return user;
     }
 
