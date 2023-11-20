@@ -1,9 +1,9 @@
 const User = require("../entities/User");
 
-
 class UserManager {
-    constructor(userRepository) {
+    constructor(userRepository, authService) {
         this.userRepository = userRepository;
+        this.authService = authService;
     }
 
     createUser(id, name, role) {
@@ -12,14 +12,11 @@ class UserManager {
         return user;
     }
 
-    findUser(id) {
+    signIn(id, password) {
         const user = this.userRepository.find(id);
-        // auth
-
-        return user;
-
-        // if(success) return user;
-        // return null;
+        const sucess = this.authService.matchPassword(password, user[0].password)
+        if(sucess) return user;
+        return null;
     }
 }
 

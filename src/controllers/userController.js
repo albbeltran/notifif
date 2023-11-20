@@ -10,8 +10,8 @@ class UserController {
     }
     
     signIn(req, res) {
-        const { id } = req.body;
-        const user = this.userManager.findUser(id);
+        const { id, password } = req.body;
+        const user = this.userManager.signIn(id, password);
         res.send(user);
     }
 }

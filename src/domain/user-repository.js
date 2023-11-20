@@ -4,11 +4,13 @@ class UserRepository {
             {
                 id: 1,
                 name: "Max",
+                password: "ok",
                 role: "alumno"
             },
             {
                 id: 2,
                 name: "Jorge",
+                password: "ok",
                 role: "administrativo"
             }
         ];
