@@ -32,5 +32,6 @@ const notificationController = new NotificationController(notificationManager);
 router.post('/notification', (req, res) => notificationController.createNotification(req, res));
 router.get('/', (req, res) => notificationController.getFeed(req, res));
 router.get('/notification', (req, res) => notificationController.getNotificationByUser(req, res));
+router.delete('/notification', (req, res) => notificationController.removeNotification(req, res));
 
 module.exports = router;

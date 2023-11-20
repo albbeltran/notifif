@@ -22,6 +22,11 @@ class NotificationManager {
         const notifications = this.notificationRepository.getByUser(id);
         return notifications;
     }
+
+    removeNotification(notifId) {
+        const notifications = this.notificationRepository.remove(notifId);
+        return notifications;
+    }
 }
 
 module.exports = NotificationManager;

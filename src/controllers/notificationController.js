@@ -20,6 +20,12 @@ class NotificationController {
         const notifications = this.notificationManager.getByUser(id);
         res.send(notifications);
     }
+
+    removeNotification(req, res) {
+        const { id } = req.body;
+        const notifications = this.notificationManager.removeNotification(id);
+        res.send(notifications);
+    }
 }
 
 module.exports = NotificationController;
