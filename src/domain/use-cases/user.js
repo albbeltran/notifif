@@ -20,6 +20,11 @@ class UserManager {
         return null;
     }
 
+    getById(id) {
+        const user = this.userRepository.find(id);
+        return user;
+    }
+
     addFollow(id, authorId) {
         const follow = new Follow(id, authorId);
         const user = this.userRepository.follow(follow);
@@ -33,11 +38,6 @@ class UserManager {
     
     getAllFollows() {
         return this.userRepository.getAllFollows();
-    }
-
-    getById(id) {
-        const user = this.userRepository.find(id);
-        return user;
     }
 }
 

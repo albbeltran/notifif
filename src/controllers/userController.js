@@ -16,7 +16,7 @@ class UserController {
     }
 
     getById(req, res) {
-        const {id} = req.body;
+        const id = req.params.id;
         const user = this.userManager.getById(id);
         res.send(user);
     }
@@ -28,7 +28,7 @@ class UserController {
     }
 
     getFollowingById(req, res) {
-        const {id} = req.body;
+        const id = req.params.id;
         const users = this.userManager.getFollowingById(id);
         res.send(users);
     }

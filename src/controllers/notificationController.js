@@ -16,7 +16,7 @@ class NotificationController {
     }
 
     getByUser(req, res) {
-        const { id } = req.body;
+        const id = req.params.id;
         const notifications = this.notificationManager.getByUser(id);
         res.send(notifications);
     }

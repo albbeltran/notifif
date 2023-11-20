@@ -36,7 +36,7 @@ class NotificationRepository {
     }
 
     getByUser(id) {
-        return this.notifications.filter(notif => notif.author === id)
+        return this.notifications.filter(notif => notif.author === Number(id))
     }
 
     remove(idToRemove) {

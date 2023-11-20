@@ -47,7 +47,7 @@ class UserRepository {
     following(id) {
         const following = [];
 
-        this.follows.forEach(follow => follow.followerId === id ? following.push(this.find(follow.followingId)) : '');
+        this.follows.forEach(follow => follow.followerId === Number(id) ? following.push(this.find(follow.followingId)) : '');
 
         return following;
     }
