@@ -30,12 +30,12 @@ class UserRepository {
 
     follow(id, authorId) {
         const user = this.find(id)[0];
-        const following = this.find(authorId)[0];
+        const author = this.find(authorId)[0];
     
         const newFollow = {
-            id: this.follows.length++,
+            id: ++this.follows.length,
             followedId: user.id,
-            followingId: following.id
+            followingId: author.id
         }
 
         this.follows.push(newFollow);
