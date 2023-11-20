@@ -22,14 +22,9 @@ class UserRepository {
         ];
 
         this.follows = [
-            {
-                "id": 1,
-                "authorId": 2
-            },
-            {
-                "id": 3,
-                "authorId": 1
-            }
+            { id: 1, followedId: 3, followingId: 1 },
+            { id: 2, followedId: 3, followingId: 2 },
+            { id: 3, followedId: 1, followingId: 2 }
         ]
     }
 
@@ -46,7 +41,7 @@ class UserRepository {
     follow(id, authorId) {
         const user = this.find(id);
         const author = this.find(authorId);
-    
+
         const newFollow = {
             id: ++this.follows.length,
             followedId: user.id,
@@ -60,9 +55,9 @@ class UserRepository {
 
     following(id) {
         const following = [];
-    
-        this.follows.forEach(follow => follow.id === id ? following.push(this.find(follow.authorId)) : '');
-    
+
+        this.follows.forEach(follow => follow.followedId === id ? following.push(this.find(follow.followingId)) : '');
+
         return following;
     }
 

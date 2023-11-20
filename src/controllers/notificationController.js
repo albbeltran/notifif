@@ -3,9 +3,9 @@ class NotificationController {
         this.notificationManager = notificationManager;
     }
 
-    createNotification(req, res) {
+    create(req, res) {
         const { title, body, author } = req.body;
-        const notifications = this.notificationManager.createNotification(title, body, author);
+        const notifications = this.notificationManager.create(title, body, author);
         res.send(notifications);
     }
 
@@ -15,15 +15,15 @@ class NotificationController {
         res.send(notifications);
     }
 
-    getNotificationByUser(req, res) {
+    getByUser(req, res) {
         const { id } = req.body;
         const notifications = this.notificationManager.getByUser(id);
         res.send(notifications);
     }
 
-    removeNotification(req, res) {
+    remove(req, res) {
         const { id } = req.body;
-        const notifications = this.notificationManager.removeNotification(id);
+        const notifications = this.notificationManager.remove(id);
         res.send(notifications);
     }
 }

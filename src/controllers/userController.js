@@ -3,9 +3,9 @@ class UserController {
         this.userManager = userManager;
     }
 
-    createUser(req, res) {
+    create(req, res) {
         const { name, role, password } = req.body;
-        const users = this.userManager.createUser(name, role, password);
+        const users = this.userManager.create(name, role, password);
         res.send(users);
     }
 
@@ -15,9 +15,9 @@ class UserController {
         res.send(user);
     }
 
-    getUserById(req, res) {
+    getById(req, res) {
         const {id} = req.body;
-        const user = this.userManager.getUserById(id);
+        const user = this.userManager.getById(id);
         res.send(user);
     }
 

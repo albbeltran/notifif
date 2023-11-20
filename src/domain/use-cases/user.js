@@ -6,16 +6,15 @@ class UserManager {
         this.authService = authService;
     }
 
-    createUser(name, role, password) {
+    create(name, role, password) {
         const user = new User(name, role, password);
-        console.log(user)
         const users = this.userRepository.create(user);
         return users;
     }
 
     signIn(id, password) {
         const user = this.userRepository.find(id);
-        const sucess = this.authService.matchPassword(password, user[0].password)
+        const sucess = this.authService.matchPassword(password, user.password)
         if(sucess) return user;
         return null;
     }
@@ -30,7 +29,7 @@ class UserManager {
         return users;
     }
 
-    getUserById(id) {
+    getById(id) {
         const user = this.userRepository.find(id);
         return user;
     }

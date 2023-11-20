@@ -6,7 +6,7 @@ class NotificationManager {
         this.userManager = userManager;
     }
 
-    createNotification(title, body, author) {
+    create(title, body, author) {
         const notification = new Notification(title, body, author);
         const notifications = this.notificationRepository.create(notification);
         return notifications;
@@ -23,7 +23,7 @@ class NotificationManager {
         return notifications;
     }
 
-    removeNotification(notifId) {
+    remove(notifId) {
         const notifications = this.notificationRepository.remove(notifId);
         return notifications;
     }
