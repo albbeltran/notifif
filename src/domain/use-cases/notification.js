@@ -6,8 +6,9 @@ class NotificationManager {
         this.userManager = userManager;
     }
 
-    create(title, body, author) {
-        const notification = new Notification(title, body, author);
+    create(title, body, authorId) {
+        const authorName = this.userManager.getById(authorId).name;
+        const notification = new Notification(title, body, authorId, authorName);
         const notifications = this.notificationRepository.create(notification);
         return notifications;
     }

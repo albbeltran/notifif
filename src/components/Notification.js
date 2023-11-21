@@ -1,22 +1,35 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-export default function Notification({ title, body }) {
+export default function Notification({ author, title, body }) {
     return (
-        <View style={styles.outerContainer}>
-            <View style={styles.innerContainer}>
-                <Text style={styles.title}>{title}</Text>
-                <Text style={styles.body}>{body}</Text>
+        <View>
+            <View style={styles.line}></View>
+            <Text style={styles.author}>{author}</Text>
+            <View style={styles.outerContainer}>
+                <View style={styles.innerContainer}>
+                    <Text style={styles.title}>{title}</Text>
+                    <Text style={styles.body}>{body}</Text>
+                </View>
             </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
+    line: {
+        width: "95%",
+        backgroundColor: "black",
+        height: 1
+    },
+    author: {
+        color: "#612165",
+        left: 10
+    },
     outerContainer: {
         backgroundColor: "#082D73",
-        padding: 10,
-        margin: 10
+        padding: 7.5,
+        marginBottom: 30
     },
     innerContainer: {
         backgroundColor: "#D9D9D9",

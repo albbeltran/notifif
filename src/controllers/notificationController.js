@@ -4,8 +4,8 @@ class NotificationController {
     }
 
     create(req, res) {
-        const { title, body, author } = req.body;
-        const notifications = this.notificationManager.create(title, body, author);
+        const { title, body, authorId } = req.body;
+        const notifications = this.notificationManager.create(title, body, authorId);
         res.send(notifications);
     }
 

@@ -12,9 +12,10 @@ import ProfilePicture from '../components/ProfilePicture';
 import { useAuth } from '../wrappers/auth-context';
 
 // Item component
-const Item = ({ title, body }) => (
+const Item = ({ author, title, body }) => (
     <View>
         <Notification
+            author={author}
             title={title}
             body={body}
         />
@@ -23,16 +24,15 @@ const Item = ({ title, body }) => (
 
 export default function Home({ navigation }) {
     const { user } = useAuth();
-    const [ feed, setFeed ] = useState([]);
+    const [feed, setFeed] = useState([]);
 
     useEffect(() => {
         fetchData();
     }, []);
 
     async function fetchData() {
-        const res = await fetch(`http://192.168.100.8:3000/${user.id}`)
+        const res = await fetch(`http://192.168.100.8:3005/${user.id}`)
         const userFeed = await res.json();
-        console.log(userFeed)
         setFeed(userFeed);
     }
 
@@ -42,7 +42,7 @@ export default function Home({ navigation }) {
 
             <FlatList
                 data={feed}
-                renderItem={({ item }) => <Item title={item.title} body={item.body} />}
+                renderItem={({ item }) => <Item author={item.authorName} title={item.title} body={item.body} />}
                 keyExtractor={item => item.id}
             />
         </View>

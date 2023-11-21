@@ -30,19 +30,22 @@ const notifications = [
         "id": 1,
         "title": "Posada FIF",
         "body": "Te invitamos a la posada FIFI",
-        "author": 2
+        "authorId": 2,
+        "authorName": "Jorge"
     },
     {
         "id": 2,
         "title": "Posada FIF",
         "body": "Te invitamos a la posada FIFI",
-        "author": 1
+        "authorId": 1,
+        "authorName": "Max"
     },
     {
         "id": 3,
         "title": "Posada FIF",
         "body": "Te invitamos a la posada FIFI",
-        "author": 2
+        "authorId": 2,
+        "authorName": "Jorge"
     }
 ]
 

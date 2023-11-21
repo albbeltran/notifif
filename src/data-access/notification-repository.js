@@ -13,13 +13,13 @@ class NotificationRepository {
     getFeed(following) {
         return this.notifications.filter(notif => {
             let post;
-            following.forEach(user => post = notif.author === user.id);
+            following.forEach(user => post = notif.authorId === user.id);
             return post;
         })
     }
 
     getByUser(id) {
-        return this.notifications.filter(notif => notif.author === Number(id))
+        return this.notifications.filter(notif => notif.authorId === Number(id))
     }
 
     remove(idToRemove) {
