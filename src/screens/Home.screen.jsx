@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect, useContext } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import FormInput from '../components/FormInput';
-
+import Button from '../components/Button';
 
 export default function Home({ navigation }) {
     const [password, setPassword] = useState();
@@ -13,7 +13,14 @@ export default function Home({ navigation }) {
                 type="password"
                 placeholder="Contraseña"
                 value={password}
-                onChange={value => setPassword(value)}
+                action={value => setPassword(value)}
+            />
+
+            <Button
+                text={"Click me"}
+                action={() => alert("Good job")}
+                background={"#082D73"}
+                textColor={"#FFFFFF"}
             />
         </View>
     )

@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import React from "react";
+import { StyleSheet, TextInput } from "react-native";
 
-export default function FormInput({ type, placeholder, value, onChange }) {
+export default function FormInput({ type, placeholder, value, action }) {
     return (
         <TextInput
             style={styles.input}
             placeholder={placeholder}
             value={value}
-            onChangeText={onChange}
+            onChangeText={action}
             {...type === "password" ? { secureTextEntry: true } : {}}
         >
         </TextInput>
