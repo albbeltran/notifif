@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect, useContext } from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 
 import FormInput from '../components/FormInput';
 import Button from '../components/Button';
@@ -9,40 +9,41 @@ import Notification from '../components/Notification';
 import ProfileCard from '../components/ProfileCard';
 import ProfilePicture from '../components/ProfilePicture';
 
+import { useAuth } from '../wrappers/auth-context';
+
+// Item component
+const Item = ({ title, body }) => (
+    <View>
+        <Notification
+            title={title}
+            body={body}
+        />
+    </View>
+);
+
 export default function Home({ navigation }) {
-    const [password, setPassword] = useState();
+    const { user } = useAuth();
+    const [ feed, setFeed ] = useState([]);
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    async function fetchData() {
+        const res = await fetch(`http://192.168.100.8:3000/${user.id}`)
+        const userFeed = await res.json();
+        console.log(userFeed)
+        setFeed(userFeed);
+    }
 
     return (
         <View>
-            <FormInput
-                type="password"
-                placeholder="Contraseña"
-                value={password}
-                action={value => setPassword(value)}
-            />
+            <Text>Bienvenido {user.name}</Text>
 
-            <Button
-                text={"Click me"}
-                action={() => alert("Good job")}
-                background={"#082D73"}
-                textColor={"#FFFFFF"}
-            />
-
-            <SearchBar />
-
-            <Notification
-                title={"¡PROXIMAMENTE POSADA NAVIDEÑA!"}
-                body={"Ponte de acuerdo con tu salon y amigos para poder participar en los concursos que hay. Ven y se parte de nuestra posada Troyana con  la comunidad universitaria."}
-            />
-
-            <ProfileCard 
-                letter={"A"}
-                name={"Alberto Iturbe Cano"}
-                email={"albertcanoiturbe@docentes.uaq.mx"}
-            />
-
-            <ProfilePicture
-                letter={"B"}
+            <FlatList
+                data={feed}
+                renderItem={({ item }) => <Item title={item.title} body={item.body} />}
+                keyExtractor={item => item.id}
             />
         </View>
     )

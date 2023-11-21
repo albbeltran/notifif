@@ -10,9 +10,9 @@ class NotificationController {
     }
 
     getFeed(req, res) {
-        const { id } = req.body;
+        const id = req.params.id;
         const notifications = this.notificationManager.getFeed(id);
-        res.send(notifications);
+        res.json(notifications);
     }
 
     getByUser(req, res) {

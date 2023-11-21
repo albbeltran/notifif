@@ -31,7 +31,7 @@ const notificationManager = new NotificationManager(notificationRepository, user
 const notificationController = new NotificationController(notificationManager);
 
 router.post('/notification', (req, res) => notificationController.create(req, res));
-router.get('/', (req, res) => notificationController.getFeed(req, res));
+router.get('/:id', (req, res) => notificationController.getFeed(req, res));
 router.get('/user/:id/notification', (req, res) => notificationController.getByUser(req, res));
 router.delete('/notification', (req, res) => notificationController.remove(req, res));
 
