@@ -8,6 +8,7 @@ import SearchBar from '../components/SearchBar';
 import Notification from '../components/Notification';
 import ProfileCard from '../components/ProfileCard';
 import ProfilePicture from '../components/ProfilePicture';
+import BottomMenu from '../components/BottomMenu';
 
 import { useAuth } from '../wrappers/auth-context';
 
@@ -28,10 +29,11 @@ export default function Home({ navigation }) {
 
     useEffect(() => {
         fetchData();
-    }, []);
+    });
 
     async function fetchData() {
-        const res = await fetch(`http://192.168.100.8:3005/${user.id}`)
+        const path = user.role === "alumno" ? `http://148.220.213.138:3000/${user.id}` : `http://148.220.213.138:3000/user/${user.id}/notification`;
+        const res = await fetch(path)
         const userFeed = await res.json();
         setFeed(userFeed);
     }
@@ -42,9 +44,11 @@ export default function Home({ navigation }) {
 
             <FlatList
                 data={feed}
-                renderItem={({ item }) => <Item author={item.authorName} title={item.title} body={item.body} />}
+                renderItem={({ item }) => <Item {...user.role === "alumno" ? { author: item.authorName } : null} title={item.title} body={item.body} />}
                 keyExtractor={item => item.id}
             />
+
+            <BottomMenu navigation={navigation} />
         </View>
     )
 }

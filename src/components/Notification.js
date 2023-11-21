@@ -5,7 +5,7 @@ export default function Notification({ author, title, body }) {
     return (
         <View>
             <View style={styles.line}></View>
-            <Text style={styles.author}>{author}</Text>
+            {author ? <Text style={styles.author}>{author}</Text> : ''}
             <View style={styles.outerContainer}>
                 <View style={styles.innerContainer}>
                     <Text style={styles.title}>{title}</Text>

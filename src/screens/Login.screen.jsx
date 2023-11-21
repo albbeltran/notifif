@@ -12,7 +12,7 @@ const baseState = () => ({
     password: '',
 });
 
-export default function Login({ navigation }) {
+export default function Login({navigation}) {
     const { user, setUser } = useAuth();
 
     const [form, setForm] = useState(baseState());
@@ -28,7 +28,7 @@ export default function Login({ navigation }) {
 
     const signIn = async () => {
         try {
-            const res = await fetch('http://192.168.100.8:3005/login', {
+            const res = await fetch('http://148.220.213.138:3000/login', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
