@@ -6,6 +6,7 @@ import FormInput from '../components/FormInput';
 import Button from '../components/Button';
 import SearchBar from '../components/SearchBar';
 import Notification from '../components/Notification';
+import ProfileCard from '../components/ProfileCard';
 
 export default function Home({ navigation }) {
     const [password, setPassword] = useState();
@@ -31,6 +32,12 @@ export default function Home({ navigation }) {
             <Notification
                 title={"¡PROXIMAMENTE POSADA NAVIDEÑA!"}
                 body={"Ponte de acuerdo con tu salon y amigos para poder participar en los concursos que hay. Ven y se parte de nuestra posada Troyana con  la comunidad universitaria."}
+            />
+
+            <ProfileCard 
+                letter={"A"}
+                name={"Alberto Iturbe Cano"}
+                email={"albertcanoiturbe@docentes.uaq.mx"}
             />
         </View>
     )
