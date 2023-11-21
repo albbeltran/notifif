@@ -7,6 +7,7 @@ import Button from '../components/Button';
 import SearchBar from '../components/SearchBar';
 import Notification from '../components/Notification';
 import ProfileCard from '../components/ProfileCard';
+import ProfilePicture from '../components/ProfilePicture';
 
 export default function Home({ navigation }) {
     const [password, setPassword] = useState();
@@ -38,6 +39,10 @@ export default function Home({ navigation }) {
                 letter={"A"}
                 name={"Alberto Iturbe Cano"}
                 email={"albertcanoiturbe@docentes.uaq.mx"}
+            />
+
+            <ProfilePicture
+                letter={"B"}
             />
         </View>
     )

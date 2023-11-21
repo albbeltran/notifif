@@ -1,21 +1,20 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import ProfilePicture from "./ProfilePicture";
 
 export default function ProfileCard({ letter, name, email }) {
     return (
-        <View style={sytles.container}>
-            <View style={sytles.thumb}>
-                <Text style={sytles.letter}>{letter}</Text>
-            </View>
-            <View style={sytles.textContainer}>
-                <Text style={sytles.name}>{name}</Text>
-                <Text style={sytles.email}>{email}</Text>
+        <View style={styles.container}>
+            <ProfilePicture letter={letter} />
+            <View style={styles.textContainer}>
+                <Text style={styles.name}>{name}</Text>
+                <Text style={styles.email}>{email}</Text>
             </View>
         </View>
     );
 }
 
-const sytles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         display: "flex",
         flexDirection: "row",
