@@ -5,7 +5,6 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-nativ
 // ROUTES
 import { ROUTES } from "../constants/navigation.constants";
 // CONTEXT
-// import { AuthContext } from "../wrappers/AuthProvider";
 import { useAuth } from '../wrappers/auth-context';
 
 const baseState = () => ({
@@ -42,21 +41,22 @@ export default function Login({ navigation }) {
             });
 
             const userLogged = await res.json();
+            setUser(userLogged);
 
-            userLogged ? setUser(userLogged) : setUser(null);
-
-            if (userLogged) {
-                console.log(user) // NULL
-                setForm(baseState());
-                navigation.navigate("Home");
-                setError(null);
-            } else {
-                setError("¡Oops! Verifica tus datos."); // Pending
-            }
         } catch (err) {
             console.log(err)
         }
     }
+
+    useEffect(() => {
+        if (user) {
+            setForm(baseState());
+            navigation.navigate(ROUTES.home);
+            setError(null);
+        } else {
+            setError("¡Oops! Verifica tus datos."); // Pending
+        }
+      }, [user]);
 
     return (
         <View style={styles.container}>
