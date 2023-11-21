@@ -5,6 +5,7 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-nativ
 import FormInput from '../components/FormInput';
 import Button from '../components/Button';
 import SearchBar from '../components/SearchBar';
+import Notification from '../components/Notification';
 
 export default function Home({ navigation }) {
     const [password, setPassword] = useState();
@@ -26,6 +27,11 @@ export default function Home({ navigation }) {
             />
 
             <SearchBar />
+
+            <Notification
+                title={"¡PROXIMAMENTE POSADA NAVIDEÑA!"}
+                body={"Ponte de acuerdo con tu salon y amigos para poder participar en los concursos que hay. Ven y se parte de nuestra posada Troyana con  la comunidad universitaria."}
+            />
         </View>
     )
 }
