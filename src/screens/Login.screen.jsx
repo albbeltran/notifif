@@ -2,12 +2,20 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect, useContext } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 
+// ROUTES
+import { ROUTES } from "../constants/navigation.constants";
+// CONTEXT
+// import { AuthContext } from "../wrappers/AuthProvider";
+import { useAuth } from '../wrappers/auth-context';
+
 const baseState = () => ({
     id: '',
     password: '',
 });
 
-export default function Login() {
+export default function Login({ navigation }) {
+    const { user, setUser } = useAuth();
+    
     const [form, setForm] = useState(baseState());
     const [valid, setValid] = useState(false);
     const [error, setError] = useState(null);
@@ -21,7 +29,7 @@ export default function Login() {
 
     const signIn = async () => {
         try {
-            const res = await fetch('http://192.168.91.154:3000/login', {
+            const res = await fetch('http://192.168.91.154:3500/login', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -33,11 +41,14 @@ export default function Login() {
                 })
             });
 
-            const user = await res.json();
+            const userLogged = await res.json();
 
-            if (user) {
+            userLogged ? setUser(userLogged) : setUser(null);
+
+            if (userLogged) {
+                console.log(user) // NULL
                 setForm(baseState());
-                alert('Success');
+                navigation.navigate("Home");
                 setError(null);
             } else {
                 setError("¡Oops! Verifica tus datos."); // Pending
@@ -85,45 +96,44 @@ export default function Login() {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     container_login: {
-      display: 'flex',
-      rowGap: 5,
-      justifyContent: 'center',
-      alignItems: 'center',
-      width: '90%',
-      backgroundColor: '#F3F3F2',
-      padding: 20,
-      borderRadius: 10
+        display: 'flex',
+        rowGap: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '90%',
+        backgroundColor: '#F3F3F2',
+        padding: 20,
+        borderRadius: 10
     },
     title: {
-      marginBottom: 3,
-      fontSize: 28,
-      textAlign: 'center',
-      color: '#612165'
+        marginBottom: 3,
+        fontSize: 28,
+        textAlign: 'center',
+        color: '#612165'
     },
     input: {
-      width: '90%',
-      backgroundColor: '#DFDEDF',
-      textAlign: 'center',
-      padding: 15,
-      fontSize: 14,
-      color: '#612165',
-      borderRadius: 17.5,
+        width: '90%',
+        backgroundColor: '#DFDEDF',
+        textAlign: 'center',
+        padding: 15,
+        fontSize: 14,
+        color: '#612165',
+        borderRadius: 17.5,
     },
     btn: {
-      marginTop: 5,
-      backgroundColor: '#082D73',
-      width: '90%',
-      height: 55,
-      padding: 15,
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderRadius: 17.5,
+        marginTop: 5,
+        backgroundColor: '#082D73',
+        width: '90%',
+        height: 55,
+        padding: 15,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 17.5,
     }
-  });
-  
+});

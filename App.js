@@ -1,9 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-import Login from './src/screens/Login.screen';
+import { AuthProvider } from './src/wrappers/auth-context';
+import Navigator from './src/wrappers/Navigator';
 
 export default function App() {
   return (
-    <Login></Login>
+    <AuthProvider>
+      <Navigator />
+    </AuthProvider>
   );
 }
