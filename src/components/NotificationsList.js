@@ -22,8 +22,9 @@ export default function NotificationsList({ id, role }) {
         fetchData();
     },[]);
 
+    setTimeout(fetchData, 3000);
+
     async function fetchData() {
-        // console.log(role)
         const path = role === "alumno" ? `http://192.168.100.8:3000/${id}` : `http://192.168.100.8:3000/user/${id}/notification`;
         const res = await fetch(path);
         const userFeed = await res.json();
@@ -35,6 +36,7 @@ export default function NotificationsList({ id, role }) {
             data={feed}
             renderItem={({ item }) => <Item {...role === "alumno" ? { author: item.authorName } : null} title={item.title} body={item.body} />}
             keyExtractor={item => item.id}
+            extraData={feed}
         />
     );
 }
