@@ -16,6 +16,18 @@ const users = [
         name: "Alberto",
         password: "ok",
         role: "administrativo"
+    },
+    {
+        id: 4,
+        name: "SEFI",
+        password: "ok",
+        role: "administrativo"
+    },
+    {
+        id: 3,
+        name: "Uni.DAO",
+        password: "ok",
+        role: "administrativo"
     }
 ]
 
