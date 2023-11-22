@@ -4,8 +4,8 @@ class UserController {
     }
 
     create(req, res) {
-        const { id, role, password } = req.body;
-        const users = this.userManager.create(id, role, password);
+        const { id, name, password, role } = req.body;
+        const users = this.userManager.create(id, name, password, role);
         res.send(users);
     }
 

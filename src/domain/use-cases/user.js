@@ -7,8 +7,8 @@ class UserManager {
         this.authService = authService;
     }
 
-    create(id, role, password) {
-        const user = new User(id, role, password);
+    create(id, name, password, role) {
+        const user = new User(id, name, password, role);
         const users = this.userRepository.create(user);
         return users;
     }
