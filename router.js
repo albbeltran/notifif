@@ -19,6 +19,7 @@ router.post('/follow', (req, res) => userController.addFollow(req, res));
 router.get('/follow/:id', (req, res) => userController.getFollowingById(req, res));
 router.get('/follow', (req, res) => userController.getAllFollows(req, res));
 router.get('/user/:id', (req, res) => userController.getById(req, res))
+router.get('/user/:visitorId/follow/:profileId', (req, res) => userController.isFollowing(req, res));
 
 // Notifications
 const NotificationController = require("./src/controllers/notificationController");

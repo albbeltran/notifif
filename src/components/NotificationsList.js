@@ -18,7 +18,6 @@ const Item = ({ author, title, body }) => (
 export default function NotificationsList({ id, role }) {
     const [feed, setFeed] = useState([]);
 
-    // ! Por corregir, produce renderizaciones sin parar
     useEffect(() => {
         fetchData();
     });

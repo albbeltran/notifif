@@ -37,6 +37,13 @@ class UserController {
         const follows = this.userManager.getAllFollows();
         res.send(follows);
     }
+
+    isFollowing(req, res) {
+        const visitorId = req.params.visitorId;
+        const profileId = req.params.profileId;
+        const isFollowing = this.userManager.isFollowing(visitorId, profileId);
+        res.send(isFollowing);
+    }
 }
 
 module.exports = UserController;

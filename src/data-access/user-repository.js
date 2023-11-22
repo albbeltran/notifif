@@ -35,6 +35,10 @@ class UserRepository {
         return this.follows;
     }
 
+    isFollowing(visitorId, profileId) {
+        return this.follows.filter(follow => follow.followerId === Number(visitorId) && follow.followingId === Number(profileId));
+    }
+
     find(id) {
         return this.users.filter(user => user.id === Number(id))[0];
     }

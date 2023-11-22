@@ -42,6 +42,12 @@ class UserManager {
     getAllFollows() {
         return this.userRepository.getAllFollows();
     }
+
+    isFollowing(visitorId, profileId) {
+        const isFollowing = this.userRepository.isFollowing(visitorId, profileId);
+        if(!isFollowing) return false;
+        return true;
+    }
 }
 
 module.exports = UserManager;
