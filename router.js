@@ -15,6 +15,7 @@ const userController = new UserController(userManager);
 
 router.post('/login', (req, res) => userController.signIn(req, res));
 router.post('/user', (req, res) => userController.create(req, res));
+router.get('/user', (req, res) => userController.getAllUsers(req, res));
 router.post('/follow', (req, res) => userController.addFollow(req, res));
 router.get('/follow/:id', (req, res) => userController.getFollowingById(req, res));
 router.get('/follow', (req, res) => userController.getAllFollows(req, res));

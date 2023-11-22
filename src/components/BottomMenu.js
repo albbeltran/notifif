@@ -20,7 +20,10 @@ export default function BottomMenu({ navigation }) {
                         <Text>Home</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.item}>
+                    <TouchableOpacity
+                        style={styles.item}
+                        onPress={() => navigation.navigate(ROUTES.search)}
+                    >
                         {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}
                         <Text>Buscar</Text>
                     </TouchableOpacity>

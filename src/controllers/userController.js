@@ -21,6 +21,11 @@ class UserController {
         res.send(user);
     }
 
+    getAllUsers(req, res) {
+        const users = this.userManager.getAllUsers();
+        res.send(users);
+    }
+
     addFollow(req, res) {
         const { id, authorId } = req.body;
         const user = this.userManager.addFollow(id, authorId);

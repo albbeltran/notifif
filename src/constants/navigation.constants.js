@@ -3,5 +3,6 @@ export const ROUTES = {
   home: 'Home',
   create: 'Create',
   profile: 'Profile',
-  follows: 'Follows'
+  follows: 'Follows',
+  search: 'Search'
 }

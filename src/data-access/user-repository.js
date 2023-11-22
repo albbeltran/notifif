@@ -12,7 +12,7 @@ class UserRepository {
         return this.users;
     }
 
-    getAll() {
+    getAllUsers() {
         return this.users;
     }
 

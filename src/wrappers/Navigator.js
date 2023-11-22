@@ -10,6 +10,7 @@ import Home from '../screens/Home.screen'
 import Create from '../screens/Create.screen';
 import Profile from '../screens/Profile.screen';
 import Follows from '../screens/Follows.screen';
+import Search from '../screens/Search.screen';
 
 export default function Navigator() {
     return (
@@ -18,8 +19,10 @@ export default function Navigator() {
                 <Stack.Screen name={ROUTES.login} component={Login} />
                 <Stack.Screen name={ROUTES.home} component={Home} />
                 <Stack.Screen name={ROUTES.create} component={Create} />
-                <Stack.Screen name={ROUTES.profile} component={Profile} initialParams={{user: {id: 1,name: "Anon"}}} />
+                <Stack.Screen name={ROUTES.profile} component={Profile} />
                 <Stack.Screen name={ROUTES.follows} component={Follows} />
+                <Stack.Screen name={ROUTES.search} component={Search} />
+
             </Stack.Navigator>
         </NavigationContainer>
     );

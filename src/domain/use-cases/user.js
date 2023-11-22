@@ -28,6 +28,10 @@ class UserManager {
         return user;
     }
 
+    getAllUsers() {
+        return this.userRepository.getAllUsers();
+    }
+
     addFollow(id, authorId) {
         const follow = new Follow(id, authorId);
         const user = this.userRepository.follow(follow);
