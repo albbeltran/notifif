@@ -24,7 +24,8 @@ class UserRepository {
     }
 
     unfollow(visitorId, profileId) {
-        return this.follows.filter(follow => !(follow.followerId === Number(visitorId) && follow.followingId === Number(profileId)));
+        this.follows = this.follows.filter(follow => !(follow.followerId === Number(visitorId) && follow.followingId === Number(profileId)));
+        return this.follows;
     }
 
     following(id) {

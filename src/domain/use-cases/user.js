@@ -53,7 +53,8 @@ class UserManager {
 
     isFollowing(visitorId, profileId) {
         const isFollowing = this.userRepository.isFollowing(visitorId, profileId);
-        if(!isFollowing) return false;
+        console.log(isFollowing)
+        if(!isFollowing.length) return false;
         return true;
     }
 }
