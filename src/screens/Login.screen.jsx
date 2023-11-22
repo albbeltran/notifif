@@ -28,7 +28,7 @@ export default function Login({navigation}) {
 
     const signIn = async () => {
         try {
-            const res = await fetch('http://148.220.213.138:3000/login', {
+            const res = await fetch('http://192.168.100.8:3000/login', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

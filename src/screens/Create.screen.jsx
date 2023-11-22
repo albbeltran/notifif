@@ -34,7 +34,7 @@ export default function Create({ navigation }) {
 
     const Submit = async () => {
         try {
-            const res = await fetch('http://148.220.213.138:3000/notification', {
+            const res = await fetch('http://192.168.100.8:3000/notification', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
