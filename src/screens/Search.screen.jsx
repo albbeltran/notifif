@@ -5,6 +5,9 @@ import { View, FlatList } from "react-native";
 import SearchBar from "../components/SearchBar";
 import ProfileCard from "../components/ProfileCard";
 
+// CONFIG
+import { BASE_URL } from "../config";
+
 // Item component
 const Item = ({ navigation, user }) => (
     <View>
@@ -31,7 +34,7 @@ export default function Search({ navigation }) {
     }, [query])
 
     async function fetchData() {
-        const path = `http://192.168.100.8:3000/user`;
+        const path = `${BASE_URL}/user`;
         const res = await fetch(path)
         let allUsers = await res.json();
         allUsers = allUsers.filter(user => user.role === "administrativo");

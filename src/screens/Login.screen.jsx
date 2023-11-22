@@ -6,6 +6,8 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-nativ
 import { ROUTES } from "../constants/navigation.constants";
 // CONTEXT
 import { useAuth } from '../wrappers/auth-context';
+// CONFIG
+import { BASE_URL } from '../config';
 
 const baseState = () => ({
     id: '',
@@ -28,7 +30,7 @@ export default function Login({navigation}) {
 
     const signIn = async () => {
         try {
-            const res = await fetch('http://192.168.100.8:3000/login', {
+            const res = await fetch(`${BASE_URL}/login`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

@@ -11,6 +11,8 @@ import BottomMenu from '../components/BottomMenu';
 import { ROUTES } from "../constants/navigation.constants";
 // CONTEXT
 import { useAuth } from '../wrappers/auth-context';
+// CONFIG
+import { BASE_URL } from '../config';
 
 const baseState = () => ({
     title: '',
@@ -36,7 +38,7 @@ export default function Create({ navigation }) {
 
     const Submit = async () => {
         try {
-            const res = await fetch('http://192.168.100.8:3000/notification', {
+            const res = await fetch(`${BASE_URL}/notification`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

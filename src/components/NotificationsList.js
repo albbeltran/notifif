@@ -4,6 +4,9 @@ import { View, Text, StyleSheet, FlatList } from "react-native";
 // Custom components
 import Notification from "./Notification";
 
+// CONFIG
+import { BASE_URL } from "../config";
+
 // Item component
 const Item = ({ author, title, body }) => (
     <View>
@@ -25,7 +28,7 @@ export default function NotificationsList({ id, role }) {
     setTimeout(fetchData, 3000);
 
     async function fetchData() {
-        const path = role === "alumno" ? `http://192.168.100.8:3000/${id}` : `http://192.168.100.8:3000/user/${id}/notification`;
+        const path = role === "alumno" ? `${BASE_URL}/${id}` : `${BASE_URL}/${id}/notification`;
         const res = await fetch(path);
         const userFeed = await res.json();
         setFeed(userFeed);

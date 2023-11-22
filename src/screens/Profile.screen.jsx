@@ -10,6 +10,8 @@ import NotificationsList from '../components/NotificationsList';
 
 // Auth context
 import { useAuth } from '../wrappers/auth-context';
+// CONFIG
+import { BASE_URL } from '../config';
 
 export default function Profile({ route, navigation }) {
     const { name, role, id } = route.params;
@@ -22,18 +24,18 @@ export default function Profile({ route, navigation }) {
     }, []);
 
     async function fetchData() {
-        const res = await fetch(`http://192.168.100.8:3000/user/${user.id}/follow/${id}`);
+        const res = await fetch(`${BASE_URL}/user/${user.id}/follow/${id}`);
         const resFollowing = await res.json();
         setFollowing(resFollowing);
     }
 
     async function changeFollow() {
         if (isFollowing) {
-            await fetch(`http://192.168.100.8:3000/user/${user.id}/follow/${id}`, { method: "DELETE" });
+            await fetch(`${BASE_URL}/user/${user.id}/follow/${id}`, { method: "DELETE" });
             setFollowing(false);
         }
         else {
-            await fetch(`http://192.168.100.8:3000/follow`, {
+            await fetch(`${BASE_URL}/follow`, {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
