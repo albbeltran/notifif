@@ -1,15 +1,33 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+
+// Custom components
 import ProfilePicture from "./ProfilePicture";
 
-export default function ProfileCard({ letter, name, email }) {
+// ROUTES
+import { ROUTES } from "../constants/navigation.constants";
+
+export default function ProfileCard({ navigation, user, email }) {
+
+    const goToProfile = async () => {
+        navigation.navigate(ROUTES.profile, {
+            id: user.id,
+            name: user.name,
+            role: user.role
+        })
+    }
+
     return (
         <View style={styles.container}>
-            <ProfilePicture letter={letter} />
-            <View style={styles.textContainer}>
-                <Text style={styles.name}>{name}</Text>
-                <Text style={styles.email}>{email}</Text>
-            </View>
+            <TouchableOpacity
+                onPress={goToProfile}
+            >
+                <ProfilePicture letter={user.name[0].toUpperCase()} />
+                <View style={styles.textContainer}>
+                    <Text style={styles.name}>{user.name}</Text>
+                    <Text style={styles.email}>{email}</Text>
+                </View>
+            </TouchableOpacity>
         </View>
     );
 }

@@ -18,7 +18,7 @@ export default function Navigator() {
                 <Stack.Screen name={ROUTES.login} component={Login} />
                 <Stack.Screen name={ROUTES.home} component={Home} />
                 <Stack.Screen name={ROUTES.create} component={Create} />
-                <Stack.Screen name={ROUTES.profile} component={Profile} />
+                <Stack.Screen name={ROUTES.profile} component={Profile} initialParams={{user: {id: 1,name: "Anon"}}} />
                 <Stack.Screen name={ROUTES.follows} component={Follows} />
             </Stack.Navigator>
         </NavigationContainer>

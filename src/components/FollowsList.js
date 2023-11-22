@@ -5,17 +5,17 @@ import { View, FlatList } from "react-native";
 import ProfileCard from "../components/ProfileCard";
 
 // Item component
-const Item = ({ letter, name }) => (
+const Item = ({ navigation, user }) => (
     <View>
         <ProfileCard
-            letter={letter}
-            name={name}
+            navigation={navigation}
+            user={user}
             email={"albertcanoiturbe@docentes.uaq.mx"}
         />
     </View>
 );
 
-export default function FollowsList({ id }) {
+export default function FollowsList({ navigation, id }) {
     const [follows, setFollows] = useState([]);
 
     useEffect(() => {
@@ -32,7 +32,7 @@ export default function FollowsList({ id }) {
     return (
         <FlatList
             data={follows}
-            renderItem={({ item }) => <Item letter={item.name[0].toUpperCase()} name={item.name} />}
+            renderItem={({ item }) => <Item navigation={navigation} user={item} />}
             keyExtractor={item => item.id}
         />
     );

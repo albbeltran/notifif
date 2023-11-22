@@ -8,21 +8,19 @@ import Button from "../components/Button";
 import BottomMenu from "../components/BottomMenu";
 import NotificationsList from '../components/NotificationsList';
 
-// Auth context
-import { useAuth } from '../wrappers/auth-context';
 
-export default function Profile() {
-    const { user } = useAuth();
+export default function Profile({ route, navigation }) {
+    const { name, role, id } = route.params;
 
     return (
         <View>
             <View>
                 <View>
                     <ProfilePicture
-                        letter={user.name[0].toUpperCase()}
+                        letter={name[0].toUpperCase()}
                     />
                     {
-                        user.role === "alumno" ?
+                        role === "alumno" ?
                             <Button
                                 text="Seguir"
                                 action={() => alert("Siguiendo")}
@@ -33,13 +31,13 @@ export default function Profile() {
                             ''
                     }
                 </View>
-                <Text>{user.name}</Text>
+                <Text>{name}</Text>
                 <Text>alexvagas@gmail.com</Text>
             </View>
 
-            <NotificationsList user={user} />
+            <NotificationsList id={id} role={role} />
 
-            <BottomMenu />
+            <BottomMenu navigation={navigation} />
         </View>
     );
 }

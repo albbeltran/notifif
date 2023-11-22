@@ -50,7 +50,11 @@ export default function BottomMenu({ navigation }) {
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.item}
-                        onPress={() => navigation.navigate(ROUTES.profile)}
+                        onPress={() => navigation.navigate(ROUTES.profile, {
+                            id: user.id,
+                            name: user.name,
+                            role: user.role
+                        })}
                     >
                         {/* <FontAwesomeIcon icon={faUserGroup} /> */}
                         <Text>Perfil</Text>

@@ -2,8 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect, useContext } from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 
+// Custom components
 import FormInput from '../components/FormInput';
 import Button from '../components/Button';
+import BottomMenu from '../components/BottomMenu';
 
 // ROUTES
 import { ROUTES } from "../constants/navigation.constants";
@@ -62,7 +64,7 @@ export default function Create({ navigation }) {
                 placeholder="Título"
                 value={title}
                 action={(value) => handleChange({ key: 'title', value })}
-                />
+            />
 
             <FormInput
                 type="text"
@@ -79,6 +81,8 @@ export default function Create({ navigation }) {
                 background={"#082D73"}
                 textColor={"#FFFFFF"}
             />
+
+            <BottomMenu navigation={navigation} />
         </View>
     );
 }
