@@ -34,6 +34,10 @@ class UserManager {
         return user;
     }
 
+    removeFollow(visitorId, profileId) {
+        return this.userRepository.unfollow(visitorId, profileId);
+    }
+
     getFollowingById(id) {
         const users = this.userRepository.following(id);
         return users;

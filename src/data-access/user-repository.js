@@ -23,6 +23,10 @@ class UserRepository {
         return followingUser;
     }
 
+    unfollow(visitorId, profileId) {
+        return this.follows.filter(follow => !(follow.followerId === Number(visitorId) && follow.followingId === Number(profileId)));
+    }
+
     following(id) {
         const following = [];
 

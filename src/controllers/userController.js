@@ -27,6 +27,13 @@ class UserController {
         res.send(user);
     }
 
+    removeFollow(req, res) {
+        const visitorId = req.params.visitorId;
+        const profileId = req.params.profileId;
+        const follows = this.userManager.removeFollow(visitorId, profileId);
+        res.send(follows);
+    }
+
     getFollowingById(req, res) {
         const id = req.params.id;
         const users = this.userManager.getFollowingById(id);
