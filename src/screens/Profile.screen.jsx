@@ -8,9 +8,12 @@ import Button from "../components/Button";
 import BottomMenu from "../components/BottomMenu";
 import NotificationsList from '../components/NotificationsList';
 
+// Auth context
+import { useAuth } from '../wrappers/auth-context';
 
 export default function Profile({ route, navigation }) {
     const { name, role, id } = route.params;
+    const { user } = useAuth();
 
     return (
         <View>
@@ -20,7 +23,7 @@ export default function Profile({ route, navigation }) {
                         letter={name[0].toUpperCase()}
                     />
                     {
-                        role === "alumno" ?
+                        user.role === "alumno" ?
                             <Button
                                 text="Seguir"
                                 action={() => alert("Siguiendo")}

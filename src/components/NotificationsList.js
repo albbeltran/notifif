@@ -18,13 +18,15 @@ const Item = ({ author, title, body }) => (
 export default function NotificationsList({ id, role }) {
     const [feed, setFeed] = useState([]);
 
+    // ! Por corregir, produce renderizaciones sin parar
     useEffect(() => {
         fetchData();
     });
 
     async function fetchData() {
+        console.log(role)
         const path = role === "alumno" ? `http://192.168.100.8:3000/${id}` : `http://192.168.100.8:3000/user/${id}/notification`;
-        const res = await fetch(path)
+        const res = await fetch(path);
         const userFeed = await res.json();
         setFeed(userFeed);
     }
