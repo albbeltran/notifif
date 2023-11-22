@@ -11,9 +11,9 @@ class NotificationRepository {
     }
 
     getFeed(following) {
-        return this.notifications.filter(notif => {
+        return this.notifications.map(notif => {
             let post;
-            following.forEach(user => post = notif.authorId === user.id);
+            following.forEach(user => notif.authorId === user.id ? post = notif : '');
             return post;
         })
     }

@@ -20,7 +20,7 @@ export default function NotificationsList({ id, role }) {
 
     useEffect(() => {
         fetchData();
-    });
+    },[]);
 
     async function fetchData() {
         // console.log(role)

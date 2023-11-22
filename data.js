@@ -22,31 +22,32 @@ const users = [
 const follows = [
     { id: 1, followerId: 3, followingId: 1 },
     { id: 2, followerId: 3, followingId: 2 },
-    { id: 3, followerId: 1, followingId: 2 }
+    { id: 3, followerId: 1, followingId: 2 },
+    { id: 4, followerId: 1, followingId: 3 }
 ]
 
 const notifications = [
-    // {
-    //     "id": 1,
-    //     "title": "Posada FIF",
-    //     "body": "Te invitamos a la posada FIFI",
-    //     "authorId": 2,
-    //     "authorName": "Jorge"
-    // },
-    // {
-    //     "id": 2,
-    //     "title": "Posada FIF",
-    //     "body": "Te invitamos a la posada FIFI",
-    //     "authorId": 1,
-    //     "authorName": "Max"
-    // },
-    // {
-    //     "id": 3,
-    //     "title": "Posada FIF",
-    //     "body": "Te invitamos a la posada FIFI",
-    //     "authorId": 2,
-    //     "authorName": "Jorge"
-    // }
+    {
+        "id": 1,
+        "title": "Posada Jorge 1",
+        "body": "Te invitamos a la posada FIFI",
+        "authorId": 2,
+        "authorName": "Jorge"
+    },
+    {
+        "id": 2,
+        "title": "Posada Jorge 2",
+        "body": "Te invitamos a la posada FIFI",
+        "authorId": 2,
+        "authorName": "Jorge"
+    },
+    {
+        "id": 3,
+        "title": "Posada Alberto",
+        "body": "Te invitamos a la posada FIFI",
+        "authorId": 3,
+        "authorName": "Alberto"
+    }
 ]
 
 module.exports = {
