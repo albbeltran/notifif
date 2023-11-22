@@ -15,6 +15,25 @@ export default function Profile({ route, navigation }) {
     const { name, role, id } = route.params;
     const { user } = useAuth();
 
+    const [isFollowing, setFollowing] = useState();
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    async function fetchData() {
+        const res = await fetch(`http://192.168.100.8:3000/user/${user.id}/follow/${id}`);
+        const resFollowing = await res.json();
+        setFollowing(resFollowing);
+    }
+
+    async function changeFollow() {
+        if(isFollowing) {
+            alert("Dejaste de seguir")
+        }
+        else alert("Siguiendo")
+    }
+
     return (
         <View>
             <View>
@@ -25,10 +44,10 @@ export default function Profile({ route, navigation }) {
                     {
                         user.role === "alumno" ?
                             <Button
-                                text="Seguir"
-                                action={() => alert("Siguiendo")}
-                                background={"#082D73"}
-                                textColor={"#FFFFFF"}
+                                text={isFollowing ? "Siguiendo" : "Seguir"}
+                                action={changeFollow}
+                                background={isFollowing ? "#082D73" : "#D9D9D9"}
+                                textColor={isFollowing ? "#FFFFFF" : "#612165"}
                             />
                             :
                             ''
