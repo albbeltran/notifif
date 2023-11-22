@@ -17,7 +17,7 @@ export default function Home({ navigation }) {
         <View>
             <Text>Bienvenido {user.name}</Text>
 
-            <NotificationsList user={user} />
+            <NotificationsList id={user.id} role={user.role} />
 
             <BottomMenu navigation={navigation} />
         </View>
