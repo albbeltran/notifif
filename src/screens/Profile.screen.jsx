@@ -51,7 +51,7 @@ export default function Profile({ route, navigation }) {
     }
 
     return (
-        <View>
+        <View style={styles.container}>
             <View>
                 <View>
                     <ProfilePicture
@@ -79,3 +79,13 @@ export default function Profile({ route, navigation }) {
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        paddingTop: 50,
+        flex: 1,
+        backgroundColor: '#ffffff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
+});

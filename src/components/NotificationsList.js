@@ -9,7 +9,7 @@ import { BASE_URL } from "../config";
 
 // Item component
 const Item = ({ author, title, body }) => (
-    <View>
+    <View style={styles.container}>
         <Notification
             author={author}
             title={title}
@@ -28,9 +28,11 @@ export default function NotificationsList({ id, role }) {
     setTimeout(fetchData, 3000);
 
     async function fetchData() {
-        const path = role === "alumno" ? `${BASE_URL}/${id}` : `${BASE_URL}/${id}/notification`;
+        const path = role === "alumno" ? `${BASE_URL}/${id}` : `${BASE_URL}/user/${id}/notification`;
+        console.log(path)
         const res = await fetch(path);
         const userFeed = await res.json();
+        console.log(userFeed)
         setFeed(userFeed);
     }
 
@@ -43,3 +45,11 @@ export default function NotificationsList({ id, role }) {
         />
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        width: '100%',
+        marginTop: 30,
+        // paddingBottom: 50
+    }
+})

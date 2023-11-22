@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { View, FlatList } from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 
 // Custom components
 import SearchBar from "../components/SearchBar";
 import ProfileCard from "../components/ProfileCard";
+import BottomMenu from '../components/BottomMenu';
 
 // CONFIG
 import { BASE_URL } from "../config";
@@ -48,8 +49,8 @@ export default function Search({ navigation }) {
     };
 
     return (
-        <View>
-            <SearchBar query={query} setQuery={setQuery} />
+        <View style={styles.container}>
+            <SearchBar style={styles.bar} query={query} setQuery={setQuery} />
 
             <FlatList
                 data={usersRendered}
@@ -57,7 +58,23 @@ export default function Search({ navigation }) {
                 keyExtractor={item => item.id}
                 extraData={usersRendered}
             />
+
+            <BottomMenu navigation={navigation} />
         </View>
 
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        paddingTop: 60,
+        flex: 1,
+        backgroundColor: '#ffffff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    bar: {
+        marginBottom: 20,
+        paddingBottom: 20
+    }
+});

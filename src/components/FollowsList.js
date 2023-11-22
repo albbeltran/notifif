@@ -33,10 +33,12 @@ export default function FollowsList({ navigation, id }) {
     }
 
     return (
-        <FlatList
-            data={follows}
-            renderItem={({ item }) => <Item navigation={navigation} user={item} />}
-            keyExtractor={item => item.id}
-        />
+        <View>
+            <FlatList
+                data={follows}
+                renderItem={({ item }) => <Item navigation={navigation} user={item} />}
+                keyExtractor={item => item.id}
+            />
+        </View>
     );
 }

@@ -15,7 +15,7 @@ import Search from '../screens/Search.screen';
 export default function Navigator() {
     return (
         <NavigationContainer>
-            <Stack.Navigator>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
                 <Stack.Screen name={ROUTES.login} component={Login} />
                 <Stack.Screen name={ROUTES.home} component={Home} />
                 <Stack.Screen name={ROUTES.create} component={Create} />

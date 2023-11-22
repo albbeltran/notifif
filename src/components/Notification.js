@@ -18,24 +18,31 @@ export default function Notification({ author, title, body }) {
 
 const styles = StyleSheet.create({
     line: {
-        width: "95%",
-        backgroundColor: "black",
-        height: 1
+        width: "100%",
+        backgroundColor: "#8A8D91",
+        height: 1,
+        marginBottom: 5
     },
     author: {
         color: "#612165",
-        left: 10
+        left: 20,
+        marginBottom: 10
     },
     outerContainer: {
-        backgroundColor: "#082D73",
+        backgroundColor: "#23395B",
         padding: 7.5,
-        marginBottom: 30
+        marginBottom: 10,
+        borderRadius: 5
     },
     innerContainer: {
-        backgroundColor: "#D9D9D9",
+        backgroundColor: "#FCFCFF",
         color: "#000000",
-        padding: 3,
-        borderRadius: 5
+        paddingLeft: 90,
+        paddingRight: 90,
+        paddingTop: 10,
+        paddingBottom: 10,
+        borderRadius: 5,
+        width: '100%'
     },
     title: {
         fontSize: 16,

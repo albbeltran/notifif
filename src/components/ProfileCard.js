@@ -35,11 +35,11 @@ export default function ProfileCard({ navigation, user, email }) {
 const styles = StyleSheet.create({
     container: {
         display: "flex",
-        flexDirection: "row",
+        flexDirection: "column",
         alignItems: "center",
         justifyContent: "flex-start",
-        gap: 15,
-        left: 10
+        gap: 10,
+        marginTop: 30,
     },
     thumb: {
         display: "flex",

@@ -60,7 +60,7 @@ export default function Create({ navigation }) {
     }
 
     return (
-        <View>
+        <View style={styles.container}>
             <FormInput
                 type="text"
                 placeholder="Título"
@@ -88,3 +88,13 @@ export default function Create({ navigation }) {
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        paddingTop: 50,
+        flex: 1,
+        backgroundColor: '#ffffff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
+});

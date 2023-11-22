@@ -27,27 +27,27 @@ const follows = [
 ]
 
 const notifications = [
-    {
-        "id": 1,
-        "title": "Posada Jorge 1",
-        "body": "Te invitamos a la posada FIFI",
-        "authorId": 2,
-        "authorName": "Jorge"
-    },
-    {
-        "id": 2,
-        "title": "Posada Jorge 2",
-        "body": "Te invitamos a la posada FIFI",
-        "authorId": 2,
-        "authorName": "Jorge"
-    },
-    {
-        "id": 3,
-        "title": "Posada Alberto",
-        "body": "Te invitamos a la posada FIFI",
-        "authorId": 3,
-        "authorName": "Alberto"
-    }
+    // {
+    //     "id": 1,
+    //     "title": "Posada Jorge 1",
+    //     "body": "Te invitamos a la posada FIFI",
+    //     "authorId": 2,
+    //     "authorName": "Jorge"
+    // },
+    // {
+    //     "id": 2,
+    //     "title": "Posada Jorge 2",
+    //     "body": "Te invitamos a la posada FIFI",
+    //     "authorId": 2,
+    //     "authorName": "Jorge"
+    // },
+    // {
+    //     "id": 3,
+    //     "title": "Posada Alberto",
+    //     "body": "Te invitamos a la posada FIFI",
+    //     "authorId": 3,
+    //     "authorName": "Alberto"
+    // }
 ]
 
 module.exports = {
