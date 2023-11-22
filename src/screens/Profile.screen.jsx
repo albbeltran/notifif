@@ -28,10 +28,24 @@ export default function Profile({ route, navigation }) {
     }
 
     async function changeFollow() {
-        if(isFollowing) {
-            alert("Dejaste de seguir")
+        if (isFollowing) {
+            await fetch(`http://192.168.100.8:3000/user/${user.id}/follow/${id}`, { method: "DELETE" });
+            setFollowing(false);
         }
-        else alert("Siguiendo")
+        else {
+            await fetch(`http://192.168.100.8:3000/follow`, {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: user.id,
+                    authorId: id
+                })
+            });
+            setFollowing(true);
+        }
     }
 
     return (
